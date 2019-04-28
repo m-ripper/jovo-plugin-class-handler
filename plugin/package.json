@@ -1,7 +1,7 @@
 {
   "name": "jovo-plugin-class-handler",
-  "version": "1.0.0",
-  "description": "Jovo-Plugin that allows using classes for defining handlers.",
+  "version": "1.0.1",
+  "description": "Jovo plugin that allows using classes for defining handlers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Maximilian Ripper",
