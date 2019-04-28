@@ -1,0 +1,37 @@
+{
+  "name": "jovo-plugin-class-handler",
+  "version": "1.0.0",
+  "description": "Jovo-Plugin that allows using classes for defining handlers.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Maximilian Ripper",
+  "keywords": [
+    "jovo",
+    "jovo plugin",
+    "jovo-plugin",
+    "typescript",
+    "decorators",
+    "npm"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "events": "^3.0.0",
+    "glob-promise": "^3.4.0",
+    "jovo-core": "^2.2.1",
+    "jovo-framework": "^2.2.2",
+    "reflect-metadata": "^0.1.13",
+    "lodash.set": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/lodash.set": "^4.3.6",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/Veake/jovo-plugin-class-handler#readme"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "jovo-plugin-class-handler-root",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Maximilian Ripper",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "example",
+    "plugin"
+  ]
+}
