@@ -1,6 +1,6 @@
 {
   "name": "jovo-plugin-class-handler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Jovo plugin that allows using classes for defining handlers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,8 +22,8 @@
     "glob-promise": "^3.4.0",
     "jovo-core": "^2.2.1",
     "jovo-framework": "^2.2.2",
-    "reflect-metadata": "^0.1.13",
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/lodash.set": "^4.3.6",
