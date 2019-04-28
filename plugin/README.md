@@ -69,7 +69,7 @@ const config = {
 }
 ```
 
-`handlers` can be a string like in the example above (regex is supported), but also a direct import:
+Parts of `handlers` can be a string like in the example above (regex is supported), but also a direct import:
 ```typescript
 import RootHandler from './handlers/root.handler';
 
