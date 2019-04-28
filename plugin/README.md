@@ -91,6 +91,17 @@ After following the installation the plugin is usable.
 
 ## Defining a Handler
 In order to define a handler you have to create a class and decorate it with `@Handler()`.
+> The annotated class has to be exported as default!
+ 
+ Example:
+ ```typescript
+@Handler()
+export default class RootHandler {
+    // ...
+}
+```
+
+
 ### `@Handler({state?: string})`
 
 * **state**: State of the handler that is applied to all it's intents. 
