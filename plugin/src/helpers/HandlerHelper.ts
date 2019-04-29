@@ -53,12 +53,14 @@ export class HandlerHelper {
                 if (metaData.state.length === 0) {
                     for (const intent of metaData.intents) {
                         if (typeof instance[intent.key] === 'function') {
-                            handler[intent.name] = instance[intent.key];
+                            handler[intent.name] = instance[intent.key].bind(instance);
                         }
                     }
                 } else {
                     for (const intent of metaData.intents) {
-                        _set(handler, `${metaData.state}.${intent.name}`, instance[intent.key]);
+                        if (typeof instance[intent.key] === 'function') {
+                            _set(handler, `${metaData.state}.${intent.name}`, instance[intent.key].bind(instance));
+                        }
                     }
                 }
                 handlers.push(handler);
