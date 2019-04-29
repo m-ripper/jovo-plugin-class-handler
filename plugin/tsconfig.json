@@ -14,10 +14,10 @@
     "sourceMap": true
   },
   "include": [
-    "types.d.ts",
-    "index.ts",
-    "src/**/*",
-    "test/**/*"
+    "./types.d.ts",
+    "./index.ts",
+    "./src/**/*",
+    "./test/**/*"
   ],
   "exclude": [
     "dist/**/*",
