@@ -2,7 +2,7 @@ import {HandlerReference} from '../JovoClassHandlerPlugin';
 import {JovoClassHandlerException} from '../JovoClassHandlerException';
 import * as glob from 'glob-promise';
 import {BaseApp, Handler as JovoHandler} from 'jovo-core';
-import {HandlerMetaData, HandlerMetaDataKey} from '../..';
+import {HandlerMetaData, HandlerMetaDataKey} from '..';
 import _set = require('lodash.set');
 
 export class HandlerHelper {

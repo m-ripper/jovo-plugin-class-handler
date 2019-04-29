@@ -12,7 +12,10 @@ export interface HandlerMetaData {
 }
 
 function HandlerDecoratorFactory(options?: HandlerOptions) {
-    return function <TFunction extends Function>(constructor: TFunction): TFunction | void {
+
+    // tslint:disable
+    return function <TFunction extends () => any>(constructor: TFunction): TFunction | void {
+        // tslint:enable
         const state = options && options.state ? options.state : '';
         const metaData: HandlerMetaData = Reflect.getMetadata(HandlerMetaDataKey, constructor) || {
             state,
@@ -23,7 +26,7 @@ function HandlerDecoratorFactory(options?: HandlerOptions) {
     };
 }
 
-export function Handler(options?: HandlerOptions): ClassDecorator {
+export function Handler(options?: HandlerOptions): any {
     if (!options) {
         options = {};
     }

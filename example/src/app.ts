@@ -5,6 +5,7 @@ import {FileDb} from 'jovo-db-filedb';
 import {GoogleAssistant} from 'jovo-platform-googleassistant';
 import {JovoClassHandlerPlugin} from 'jovo-plugin-class-handler';
 
+
 // ------------------------------------------------------------------
 // APP INITIALIZATION
 // ------------------------------------------------------------------
