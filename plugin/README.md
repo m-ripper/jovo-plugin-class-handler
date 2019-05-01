@@ -28,37 +28,12 @@ export default class RootHandler {
 }
 ```
 
-## Table of Contents
-  * [Example:](#example-)
-  * [Getting Started](#getting-started)
-    + [Prerequisites](#prerequisites)
-    + [Installation](#installation)
-    + [Configuration](#configuration)
-      - [Example](#example)
-  * [Usage](#usage)
-    + [Handler](#handler)
-    + [Intent](#intent)
-    + [Data-Decorators](#data-decorators)
-  * [API](#api)
-    + [`@Handler(options?: HandlerOptions | string)`](#--handler-options---handleroptions---string--)
-      - [Parameter `options`](#parameter--options-)
-    + [`@Intent(options?: IntentOptions | string)`](#--intent-options---intentoptions---string--)
-      - [Parameter `options`](#parameter--options--1)
-    + [Data Decorators](#data-decorators)
-      - [`@Data(key?: string)` / `@RequestData(key?: string)`](#--data-key---string-------requestdata-key---string--)
-      - [`@Session(key?: string)` / `@SessionData(key?: string)`](#--session-key---string-------sessiondata-key---string--)
-      - [`@User(key?: string)` / `@UserData(key?: string)`](#--user-key---string-------userdata-key---string--)
-      - [`@AppData(key?: string)`](#--appdata-key---string--)
-      - [`@InputData(key?: string)`](#--inputdata-key---string--)
-  * [Roadmap](#roadmap)
-
-
 ## Getting Started
 These instructions will get you the plugin installed and ready to be used.
  
 ### Prerequisites
 * `typescript` v3.0 or newer
-* `jovo/jovo-framework` v2.0 or newer
+* [jovo/jovo-framework](https://github.com/jovotech/jovo-framework) v2.0 or newer
 
 ### Installation
 ```sh
@@ -115,6 +90,32 @@ const config = {
     // ...
 }
 ```
+
+## Table of Contents
+- [jogo-plugin-class-handler](#jogo-plugin-class-handler)
+  * [Example:](#example-)
+  * [Getting Started](#getting-started)
+    + [Prerequisites](#prerequisites)
+    + [Installation](#installation)
+    + [Configuration](#configuration)
+      - [Example](#example)
+  * [Usage](#usage)
+    + [Handler](#handler)
+    + [Intent](#intent)
+    + [Data-Decorators](#data-decorators)
+  * [API](#api)
+    + [@Handler(options?: HandlerOptions | string)](#-handler-options---handleroptions---string-)
+      - [Parameter options](#parameter-options)
+    + [@Intent(options?: IntentOptions | string)](#-intent-options---intentoptions---string-)
+      - [Parameter options](#parameter-options-1)
+    + [Data Decorators](#data-decorators)
+      - [@Data(key?: string) / @RequestData(key?: string)](#-data-key---string-----requestdata-key---string-)
+      - [@Session(key?: string) / @SessionData(key?: string)](#-session-key---string-----sessiondata-key---string-)
+      - [@User(key?: string) / @UserData(key?: string)](#-user-key---string-----userdata-key---string-)
+      - [@AppData(key?: string)](#-appdata-key---string-)
+      - [@InputData(key?: string)](#-inputdata-key---string-)
+  * [Roadmap](#roadmap)
+
 
 ## Usage
 After following the installation the plugin is usable. \
@@ -210,10 +211,10 @@ export default class RootHandler {
 <a name="api"></a>
 ## API
 <a name="api-handler"></a>
-### `@Handler(options?: HandlerOptions | string)`
+### @Handler(options?: HandlerOptions | string)
 > `HandlerOptions`: `{state?: string}`
 
-#### Parameter `options`
+#### Parameter options
 * if no `options`: The handler's state will be stateless.
 
 * if `options` of type `string`: The handler's state will be set to `options`.
@@ -223,10 +224,10 @@ export default class RootHandler {
 ---
 
 <a name="api-intent"></a>
- ### `@Intent(options?: IntentOptions | string)`
+ ### @Intent(options?: IntentOptions | string)
  > `IntentOptions`: `{name?: string}`
  
- #### Parameter `options`
+ #### Parameter options
 * if no `options`: The intent's name will be the annotated method's name.
 
 * if `options` of type `string`: The intent's name will be set to `options`.
@@ -238,19 +239,19 @@ export default class RootHandler {
 <a name="api-data-decorators"></a>
 ### Data Decorators
 
-#### `@Data(key?: string)` / `@RequestData(key?: string)`
+#### @Data(key?: string) / @RequestData(key?: string)
 Binds `$data` or `$data.{key}` if key is given.
 
-#### `@Session(key?: string)` / `@SessionData(key?: string)`
+#### @Session(key?: string) / @SessionData(key?: string)
 Binds `$session.$data` or `$session.$data.{key}` if key is given.
 
-#### `@User(key?: string)` / `@UserData(key?: string)`
+#### @User(key?: string) / @UserData(key?: string)
 Binds `$user.$data` or `$user.$data.{key}` if key is given.
 
-#### `@AppData(key?: string)`
+#### @AppData(key?: string)
 Binds `$app.$data` or `$app.$data.{key}` if key is given.
 
-#### `@InputData(key?: string)`
+#### @InputData(key?: string)
 Binds `$inputs` or `$inputs.{key}` if key is given.
 
 ## Roadmap
