@@ -11,12 +11,20 @@ export interface HandlerMetaData {
     intents: IntentMetaData[];
 }
 
-function HandlerDecoratorFactory(options?: HandlerOptions) {
+export function Handler(options?: HandlerOptions | string): ClassDecorator {
+    if (!options) {
+        options = {
+            state: '',
+        };
+    } else if (typeof options === 'string') {
+        options = {
+            state: options,
+        };
+    }
 
-    // tslint:disable
-    return function <TFunction extends () => any>(constructor: TFunction): TFunction | void {
-        // tslint:enable
-        const state = options && options.state ? options.state : '';
+    const $options: HandlerOptions = options as HandlerOptions;
+    return (constructor) => {
+        const state = $options && $options.state ? $options.state : '';
         const metaData: HandlerMetaData = Reflect.getMetadata(HandlerMetaDataKey, constructor) || {
             state,
             intents: [],
@@ -24,11 +32,4 @@ function HandlerDecoratorFactory(options?: HandlerOptions) {
         metaData.state = state;
         Reflect.defineMetadata(HandlerMetaDataKey, metaData, constructor);
     };
-}
-
-export function Handler(options?: HandlerOptions): any {
-    if (!options) {
-        options = {};
-    }
-    return HandlerDecoratorFactory(options);
 }
