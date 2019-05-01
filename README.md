@@ -8,7 +8,7 @@ import {Handler, InputData, Intent, Session} from 'jovo-plugin-class-handler';
 import {Input, Jovo} from 'jovo-core';
 
 @Handler()
-export default class RootHandler {
+export class RootHandler {
 
     @Intent()
     LAUNCH(jovo: Jovo) {
@@ -123,12 +123,11 @@ You can find a working example in the github-repository in the `example` folder.
 ### Handler
 To get started, create a new Typescript file and export a class and annotate it with `@Handler`. \
 The class could look like this:
-> The class has to be export as `default`!
 ```typescript
 import {Handler} from 'jovo-plugin-class-handler';
 
 @Handler()
-export default class RootHandler {
+export class RootHandler {
 }
 ```
 Additionally you can set the state of the handler:
@@ -136,13 +135,15 @@ Additionally you can set the state of the handler:
 import {Handler} from 'jovo-plugin-class-handler';
 
 @Handler('example')
-export default class ExampleHandler {
+export class ExampleHandler {
 }
 ```
 For more information look at the [API here](#api-handler)
 
 ### Intent
-After you have defined a handler you can define the intents. For that you have to annotate it with `@Intent`. \
+> Attention! Right now the first parameter always is the `Jovo`-object for a method that is decorated with `@Intent`.
+
+After you have defined a handler you can define the intents. For that you have to annotate a method with `@Intent`. \
 Here is an example:
 
 ```typescript
@@ -150,7 +151,7 @@ import {Handler, Intent} from 'jovo-plugin-class-handler';
 import {Jovo} from 'jovo-core';
 
 @Handler()
-export default class RootHandler {
+export class RootHandler {
 
     @Intent()
     LAUNCH(jovo: Jovo) {
@@ -187,7 +188,7 @@ import {Handler, InputData, Intent, Session} from 'jovo-plugin-class-handler';
 import {Input, Jovo} from 'jovo-core';
 
 @Handler()
-export default class RootHandler {
+export class RootHandler {
 
     @Intent()
     LAUNCH(jovo: Jovo) {
@@ -226,6 +227,9 @@ export default class RootHandler {
  ### @Intent(options?: IntentOptions | string)
  > `IntentOptions`: `{name?: string}`
  
+ > Attention! Right now the first parameter always is the `Jovo`-object for a method that is decorated with `@Intent`.
+
+ 
  #### Parameter options
 * if no `options`: The intent's name will be the annotated method's name.
 
@@ -237,7 +241,7 @@ export default class RootHandler {
 
 <a name="api-data-decorators"></a>
 ### Data Decorators
-
+> The first parameter of a `@Intent` decorated method is reserved for the `Jovo`-object.
 #### @Data(key?: string) / @RequestData(key?: string)
 Binds `$data` or `$data.{key}` if key is given.
 

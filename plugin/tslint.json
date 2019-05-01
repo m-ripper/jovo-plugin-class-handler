@@ -19,6 +19,7 @@
         ],
         "interface-name": false,
         "ordered-imports": false,
+        "member-ordering": [true, {"order": "fields-first"}],
         "object-literal-sort-keys": false,
         "no-consecutive-blank-lines": false,
         "no-string-literal": false

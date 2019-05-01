@@ -2,7 +2,7 @@ import {Handler, InputData, Intent, Session} from 'jovo-plugin-class-handler';
 import {Input, Jovo} from 'jovo-core';
 
 @Handler()
-export default class RootHandler {
+export class RootHandler {
 
     @Intent()
     LAUNCH(jovo: Jovo) {
