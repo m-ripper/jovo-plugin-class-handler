@@ -1,7 +1,7 @@
 # jogo-plugin-class-handler
 Allows defining classes which serve as handlers via decorators.
 
-## Example:
+## Example
 > Handler: `root.handler.ts`
 ```typescript
 import {Handler, InputData, Intent, Session} from 'jovo-plugin-class-handler';
@@ -27,6 +27,31 @@ export default class RootHandler {
     }
 }
 ```
+
+## Table of Contents
+- [jogo-plugin-class-handler](#jogo-plugin-class-handler)
+  * [Example](#example)
+  * [Getting Started](#getting-started)
+    + [Prerequisites](#prerequisites)
+    + [Installation](#installation)
+    + [Configuration](#configuration)
+      - [Example](#example-1)
+  * [Usage](#usage)
+    + [Handler](#handler)
+    + [Intent](#intent)
+    + [Data-Decorators](#data-decorators)
+  * [API](#api)
+    + [@Handler(options?: HandlerOptions | string)](#-handler-options---handleroptions---string-)
+      - [Parameter options](#parameter-options)
+    + [@Intent(options?: IntentOptions | string)](#-intent-options---intentoptions---string-)
+      - [Parameter options](#parameter-options-1)
+    + [Data Decorators](#data-decorators)
+      - [@Data(key?: string) / @RequestData(key?: string)](#-data-key---string-----requestdata-key---string-)
+      - [@Session(key?: string) / @SessionData(key?: string)](#-session-key---string-----sessiondata-key---string-)
+      - [@User(key?: string) / @UserData(key?: string)](#-user-key---string-----userdata-key---string-)
+      - [@AppData(key?: string)](#-appdata-key---string-)
+      - [@InputData(key?: string)](#-inputdata-key---string-)
+  * [Roadmap](#roadmap)
 
 ## Getting Started
 These instructions will get you the plugin installed and ready to be used.
@@ -90,32 +115,6 @@ const config = {
     // ...
 }
 ```
-
-## Table of Contents
-- [jogo-plugin-class-handler](#jogo-plugin-class-handler)
-  * [Example:](#example-)
-  * [Getting Started](#getting-started)
-    + [Prerequisites](#prerequisites)
-    + [Installation](#installation)
-    + [Configuration](#configuration)
-      - [Example](#example)
-  * [Usage](#usage)
-    + [Handler](#handler)
-    + [Intent](#intent)
-    + [Data-Decorators](#data-decorators)
-  * [API](#api)
-    + [@Handler(options?: HandlerOptions | string)](#-handler-options---handleroptions---string-)
-      - [Parameter options](#parameter-options)
-    + [@Intent(options?: IntentOptions | string)](#-intent-options---intentoptions---string-)
-      - [Parameter options](#parameter-options-1)
-    + [Data Decorators](#data-decorators)
-      - [@Data(key?: string) / @RequestData(key?: string)](#-data-key---string-----requestdata-key---string-)
-      - [@Session(key?: string) / @SessionData(key?: string)](#-session-key---string-----sessiondata-key---string-)
-      - [@User(key?: string) / @UserData(key?: string)](#-user-key---string-----userdata-key---string-)
-      - [@AppData(key?: string)](#-appdata-key---string-)
-      - [@InputData(key?: string)](#-inputdata-key---string-)
-  * [Roadmap](#roadmap)
-
 
 ## Usage
 After following the installation the plugin is usable. \
