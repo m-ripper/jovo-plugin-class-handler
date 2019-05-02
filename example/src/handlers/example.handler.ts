@@ -1,12 +1,11 @@
-import {Data, Handler, Intent} from 'jovo-plugin-class-handler';
-import {Jovo} from 'jovo-core';
+import {BaseHandler, Data, Handler, Intent} from 'jovo-plugin-class-handler';
 
 @Handler({state: 'example'})
-export class ExampleHandler {
+export class ExampleHandler extends BaseHandler {
 
     @Intent({name: 'TestIntent'})
-    someMethodName(jovo: Jovo, @Data('example') example: string) {
-        jovo.tell(example || 'no request-data passed.');
+    someMethodName(@Data('example') example: string) {
+        this.tell(example || 'no request-data passed.');
     }
 
 }

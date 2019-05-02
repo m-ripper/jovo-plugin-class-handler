@@ -2,7 +2,7 @@ import {Constructor, HandlerReference} from '../JovoClassHandlerPlugin';
 import {JovoClassHandlerException} from '../JovoClassHandlerException';
 import * as glob from 'glob-promise';
 import {Handler as JovoHandler, Jovo} from 'jovo-core';
-import {DataParamMetaData, HandlerMetaData, HandlerMetaDataKey} from '..';
+import {BaseHandler, DataParamMetaData, HandlerMetaData, HandlerMetaDataKey} from '..';
 import _set = require('lodash.set');
 import _get = require('lodash.get');
 
@@ -75,8 +75,18 @@ export class HandlerHelper {
                             const path = dataParam.accessor ? `${dataParam.type}.${dataParam.accessor}` : dataParam.type;
                             injectParams.push(_get(jovo, path));
                         });
+                        if (instance instanceof BaseHandler) {
+
+                            // tslint:disable
+                            for (const prop in jovo) {
+                                // tslint:enable
+                                instance[prop] = jovo[prop];
+                            }
+                            return method.apply(instance, injectParams);
+                        }
                         return method.apply(instance, [jovo].concat(injectParams));
                     };
+
                     if (metaData.state.length === 0) {
                         handler[intent.name] = newFunc.bind(instance, func, intent.dataParameters);
                     } else {
