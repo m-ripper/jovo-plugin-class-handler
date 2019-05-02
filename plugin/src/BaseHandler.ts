@@ -2,7 +2,7 @@ import {Jovo, SpeechBuilder} from 'jovo-core';
 
 /**
  * BaseHandler, this is just used to provide access to method/properties of the Jovo object via `this`.
- * All method implementations are simply there to satisfy the inheritance. The correct values are injected during the plugin-installation.
+ * All method implementations are simply there to satisfy the inheritance. The correct values are injected during the execution of the @Intent-method.
  */
 export class BaseHandler extends Jovo {
     public isNewSession(): boolean {
