@@ -1,7 +1,7 @@
 # jogo-plugin-class-handler
 Allows defining classes which serve as handlers via decorators.
 
-## Example
+## Examples
 > Handler: `root.handler.ts`
 ```typescript
 import {Handler, InputData, Intent, Session} from 'jovo-plugin-class-handler';
@@ -27,21 +27,38 @@ export class RootHandler {
     }
 }
 ```
+or
+```typescript
+import {BaseHandler, Data, Handler, Intent} from 'jovo-plugin-class-handler';
+
+@Handler({state: 'example'})
+export class ExampleHandler extends BaseHandler {
+
+    @Intent({name: 'TestIntent'})
+    someMethodName(@Data('example') example: string) {
+        this.tell(example || 'no request-data passed.');
+    }
+
+}
+```
 
 ## Table of Contents
 - [jogo-plugin-class-handler](#jogo-plugin-class-handler)
-  * [Example](#example)
+  * [Examples](#examples)
   * [Getting Started](#getting-started)
     + [Prerequisites](#prerequisites)
     + [Installation](#installation)
     + [Configuration](#configuration)
-      - [Example](#example-1)
+      - [Example](#example)
   * [Usage](#usage)
     + [Handler](#handler)
+      - [Handler - State](#handler---state)
+      - [Handler - alternative way to access the Jovo object](#handler---alternative-way-to-access-the-jovo-object)
     + [Intent](#intent)
     + [Data-Decorators](#data-decorators)
   * [API](#api)
     + [@Handler(options?: HandlerOptions | string)](#-handler-options---handleroptions---string-)
+      - [BaseHandler](#basehandler)
       - [Parameter options](#parameter-options)
     + [@Intent(options?: IntentOptions | string)](#-intent-options---intentoptions---string-)
       - [Parameter options](#parameter-options-1)
@@ -130,6 +147,9 @@ import {Handler} from 'jovo-plugin-class-handler';
 export class RootHandler {
 }
 ```
+> The first parameter of a `@Intent` decorated method is always a `Jovo`-object if the handler is defined this way.
+
+#### Handler - State
 Additionally you can set the state of the handler:
 ```typescript
 import {Handler} from 'jovo-plugin-class-handler';
@@ -138,10 +158,28 @@ import {Handler} from 'jovo-plugin-class-handler';
 export class ExampleHandler {
 }
 ```
+
+#### Handler - alternative way to access the Jovo object
+You can also define a handler the following way:
+```typescript
+import {BaseHandler, Data, Handler, Intent} from 'jovo-plugin-class-handler';
+
+@Handler({state: 'example'})
+export class ExampleHandler extends BaseHandler {
+
+    @Intent({name: 'TestIntent'})
+    someMethodName(@Data('example') example: string) {
+        this.tell(example || 'no request-data passed.');
+    }
+
+}
+
+```
+> If you define a handler this way, you have access to the `Jovo`-object via `this`. 
+
 For more information look at the [API here](#api-handler)
 
 ### Intent
-> Attention! Right now the first parameter always is the `Jovo`-object for a method that is decorated with `@Intent`.
 
 After you have defined a handler you can define the intents. For that you have to annotate a method with `@Intent`. \
 Here is an example:
@@ -214,6 +252,10 @@ export class RootHandler {
 ### @Handler(options?: HandlerOptions | string)
 > `HandlerOptions`: `{state?: string}`
 
+#### BaseHandler
+The `BaseHandler`-class is just a wrapper that extends the `Jovo`-class and gets it's value injected at runtime. \
+If a `@Handler` decorated class extends the `BaseHandler` all properties and methods of the `Jovo` object are accessible via `this`.
+
 #### Parameter options
 * if no `options`: The handler's state will be stateless.
 
@@ -224,13 +266,13 @@ export class RootHandler {
 ---
 
 <a name="api-intent"></a>
- ### @Intent(options?: IntentOptions | string)
+### @Intent(options?: IntentOptions | string)
  > `IntentOptions`: `{name?: string}`
  
- > Attention! Right now the first parameter always is the `Jovo`-object for a method that is decorated with `@Intent`.
+ > Attention! The first parameter always is the `Jovo`-object for a method that is decorated with `@Intent` if the handler does not extend `BaseHandler`.
 
  
- #### Parameter options
+#### Parameter options
 * if no `options`: The intent's name will be the annotated method's name.
 
 * if `options` of type `string`: The intent's name will be set to `options`.
@@ -241,7 +283,7 @@ export class RootHandler {
 
 <a name="api-data-decorators"></a>
 ### Data Decorators
-> The first parameter of a `@Intent` decorated method is reserved for the `Jovo`-object.
+> The first parameter of a `@Intent` decorated method is reserved for the `Jovo`-object if the handler-class does not extend `BaseHandler`.
 #### @Data(key?: string) / @RequestData(key?: string)
 Binds `$data` or `$data.{key}` if key is given.
 
@@ -261,5 +303,5 @@ Binds `$inputs` or `$inputs.{key}` if key is given.
 All listed points have no specific order:
 
 * ~~Parameter decorator to inject data from the `Jovo`-object, example: `@Session(key?: string)` or `@SessionData(key?: string)`.~~
-* ~~Find~~ Implement a way to allow access to `Jovo` context in class to allow calls in vanilla handlers like `this.tell(...)`
+* ~~Find & Implement a way to allow access to `Jovo` context in class to allow calls in vanilla handlers like `this.tell(...)`.~~
 * Implement validation for data and/or input
