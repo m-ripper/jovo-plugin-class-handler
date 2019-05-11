@@ -95,6 +95,7 @@ app.use(
     new JovoClassHandlerPlugin(),
 );
 ```
+> Calling `app.setHandler(...)` will override all loaded handlers that are being loaded with this plugin!
 ### Configuration
 You need to setup a configuration for the plugin in the `config.ts` in order for the plugin to detect all handlers. 
 
