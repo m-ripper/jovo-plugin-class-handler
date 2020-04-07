@@ -1,10 +1,14 @@
-export class JovoClassHandlerException extends Error {
-    public baseError?: Error;
+import { ErrorCode, JovoError } from 'jovo-core';
 
-    constructor(message: string | Error) {
-        super('[jovo-class-handler] ' + message);
-        if (typeof message !== 'string') {
-            this.baseError = message;
-        }
-    }
+export class JovoClassHandlerException extends JovoError {
+  constructor(err: string | Error, details?: string, hint?: string, seeMore?: string) {
+    super(
+      typeof err === 'string' ? err : err.message,
+      ErrorCode.ERR_PLUGIN,
+      'JovoClassHandler',
+      details,
+      hint,
+      seeMore,
+    );
+  }
 }

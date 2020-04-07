@@ -1,19 +1,29 @@
-import 'reflect-metadata';
-import 'jovo-framework/dist/src/index';
+import 'reflect-metadata'; // tslint:disable-line
 
-declare module 'jovo-core' {
-    interface Jovo {
-        [index: string]: any;
-    }
+import { Config } from './JovoClassHandler';
+
+interface AppJovoClassHandlerConfig {
+  JovoClassHandler?: Config;
 }
 
-export {JovoClassHandlerPlugin, JovoClassHandlerConfig, HandlerReference} from './JovoClassHandlerPlugin';
-export {JovoClassHandlerException} from './JovoClassHandlerException';
+declare module 'jovo-core/dist/src/Interfaces' {
+  interface ExtensiblePluginConfigs extends AppJovoClassHandlerConfig {}
+}
 
-export {BaseHandler} from './BaseHandler';
+export { JovoClassHandler, Config, HandlerReference } from './JovoClassHandler';
+export { JovoClassHandlerException } from './JovoClassHandlerException';
 
-/* region Decorators */
-export {Handler, HandlerOptions, HandlerMetaData, HandlerMetaDataKey} from './decorators/Handler';
-export {Intent, IntentOptions, IntentMetaData} from './decorators/Intent';
-export * from './decorators/DataDecorators';
-/* endregion */
+export { BaseHandler } from './BaseHandler';
+
+export { Handler, HandlerOptions } from './decorators/Handler';
+export { Intent, IntentOptions } from './decorators/Intent';
+export {
+  Data,
+  AppData,
+  RequestData,
+  InputData,
+  Session,
+  SessionData,
+  User,
+  UserData,
+} from './decorators/DataDecorators';

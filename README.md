@@ -86,13 +86,13 @@ $ npm install jovo-plugin-class-handler --save
 
 In your `app.ts`:
 ```typescript
-import {JovoClassHandlerPlugin} from 'jovo-plugin-class-handler';
+import {JovoClassHandler} from 'jovo-plugin-class-handler';
 
 const app = new App();
 
 app.use(
     // ...
-    new JovoClassHandlerPlugin(),
+    new JovoClassHandler(),
 );
 ```
 > Calling `app.setHandler(...)` will override all loaded handlers that are being loaded with this plugin!
@@ -107,7 +107,7 @@ In your `config.ts`:
 const config = {
     // ...
     plugin: {
-        JovoClassHandlerPlugin: {
+        JovoClassHandler: {
             handlers: [
                 __dirname + '/**/*.handler.{ts,js}',
             ],
@@ -124,7 +124,7 @@ import RootHandler from './handlers/root.handler';
 const config = {
     // ...
     plugin: {
-        JovoClassHandlerPlugin: {
+        JovoClassHandler: {
             handlers: [
                 RootHandler,
             ],

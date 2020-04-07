@@ -1,28 +1,22 @@
-// ------------------------------------------------------------------
-// APP CONFIGURATION
-// ------------------------------------------------------------------
+import { config } from 'jovo-framework';
 
+// tslint:disable-next-line
+export = config({
+  logging: false,
 
-const config = {
-    logging: false,
+  intentMap: {
+    'AMAZON.StopIntent': 'END',
+  },
 
-    intentMap: {
-        'AMAZON.StopIntent': 'END',
+  db: {
+    FileDb: {
+      pathToFile: './../../db/db.json',
     },
+  },
 
-    db: {
-        FileDb: {
-            pathToFile: './../../db/db.json',
-        },
+  plugin: {
+    JovoClassHandler: {
+      handlers: [__dirname + '/**/*.handler.{ts,js}'],
     },
-
-    plugin: {
-        JovoClassHandlerPlugin: {
-            handlers: [
-                __dirname + '/**/*.handler.{ts,js}',
-            ],
-        },
-    },
-};
-
-export = config;
+  },
+});

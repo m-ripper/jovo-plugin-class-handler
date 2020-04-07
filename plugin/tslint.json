@@ -1,28 +1,10 @@
 {
     "defaultSeverity": "error",
     "extends": [
-        "tslint:recommended"
+        "@m-ripper/tslint-config"
     ],
     "jsRules": {},
     "rules": {
-        "quotemark": [
-            true,
-            "single"
-        ],    "indent": [
-            true,
-            "spaces",
-            2
-        ],
-        "max-line-length": [
-            true,
-            150
-        ],
-        "interface-name": false,
-        "ordered-imports": false,
-        "member-ordering": [true, {"order": "fields-first"}],
-        "object-literal-sort-keys": false,
-        "no-consecutive-blank-lines": false,
-        "no-string-literal": false
     },
     "rulesDirectory": []
 }
