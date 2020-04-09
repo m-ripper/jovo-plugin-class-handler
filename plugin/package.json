@@ -10,7 +10,7 @@
     "jovo plugin",
     "jovo-plugin",
     "typescript",
-    "decorators",
+    "decorators"
   ],
   "license": "MIT",
   "scripts": {
