@@ -75,7 +75,7 @@ These instructions will get you the plugin installed and ready to be used.
  
 ### Prerequisites
 * `typescript` v3.0 or newer
-* [jovo/jovo-framework](https://github.com/jovotech/jovo-framework) v2.0 or newer
+* [jovo/jovo-framework](https://github.com/jovotech/jovo-framework) v3.0 or newer
 
 ### Installation
 ```sh
