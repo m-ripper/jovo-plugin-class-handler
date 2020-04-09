@@ -48,9 +48,7 @@ export class JovoClassHandler implements Plugin {
 
   async setup(handleRequest: HandleRequest) {
     try {
-      const configContainer = handleRequest.jovo ? handleRequest.jovo.$config : handleRequest.app.config;
-      const config = _get(configContainer, `plugin.${this.name}`);
-      await this.loadHandlers(handleRequest, config.handlers);
+      await this.loadHandlers(handleRequest, this.config.handlers);
       handleRequest.app.setHandler(...this.#handlers);
     } catch (e) {
       if (e instanceof JovoClassHandlerException) {
@@ -62,9 +60,7 @@ export class JovoClassHandler implements Plugin {
 
   private async loadHandlers(handleRequest: HandleRequest, references: HandlerReference[]): Promise<void> {
     if (references.length === 0) {
-      throw new JovoClassHandlerException(
-        'No references are given in the config. That means no handlers can be loaded.',
-      );
+      throw new JovoClassHandlerException('No references are given in the config. No handlers could be loaded.');
     }
 
     this.#processedConstructors = [];
