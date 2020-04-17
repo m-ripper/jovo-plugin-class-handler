@@ -1,4 +1,4 @@
-# jogo-plugin-class-handler
+# jovo-plugin-class-handler
 Allows defining classes which serve as handlers via decorators.
 
 ## Examples
