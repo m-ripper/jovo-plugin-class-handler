@@ -1,4 +1,4 @@
-# jogo-plugin-class-handler
+# jovo-plugin-class-handler
 
 Allows defining classes which serve as handlers via decorators.
 
@@ -61,7 +61,7 @@ export class ExampleHandler extends BaseHandler {
 
 ## Table of Contents
 
-- [jogo-plugin-class-handler](#jogo-plugin-class-handler)
+- [jovo-plugin-class-handler](#jovo-plugin-class-handler)
   - [Examples](#examples)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
